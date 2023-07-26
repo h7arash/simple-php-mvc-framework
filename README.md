@@ -1,7 +1,6 @@
-## **This repo is a fork of @miladniroee repository for shared hosts**
-
-
 # Simple PHP MVC Framework (Shared Hosts)
+
+## **This repo is a fork of @miladniroee repository for shared hosts**
 
 ## Table of Content:
 
