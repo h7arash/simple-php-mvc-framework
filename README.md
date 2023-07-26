@@ -1,4 +1,7 @@
-# Simple PHP MVC Framework (no composer)
+## **This repo is a fork of @miladniroee repository for shared hosts**
+
+
+# Simple PHP MVC Framework (Shared Hosts)
 
 ## Table of Content:
 
@@ -24,13 +27,7 @@ PHP 7.4+
 
 ## Installation
 
-1- Download Zip and extract.
-
-2- Run server:
-
-```shell
-php -S localhost:80
-```
+1. Download Zip and extract.
 
 ## Usage
 
@@ -42,6 +39,7 @@ php -S localhost:80
 ```php
 echo config("db_name"); // php_mvc_framework
 ```
+* For first run create a `users` table in database
 
 ### Routing
 

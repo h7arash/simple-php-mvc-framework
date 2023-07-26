@@ -7,10 +7,9 @@ session_start();
 require_once(__DIR__ . '/Core/functions.php');
 
 spl_autoload_register(function ($Name) {
-    require_once(__DIR__ ."/". $Name . '.php');
+    $Name = str_replace('\\','/',$Name);
+    require_once(__DIR__ . "/" . $Name . '.php');
 });
 
 $Router = new Core\Router();
 $Router->GetRoute();
-
-
