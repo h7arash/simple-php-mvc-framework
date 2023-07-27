@@ -27,18 +27,20 @@ PHP 7.4+
 ## Installation
 
 1. Download Zip and extract.
+2. Make a copy from `.env.example` file and renamed to `.env`
+3. Add your environment variables in `.env` file
 
 ## Usage
 
 ### Configuration
 
-* set database configuration on `Core/config.php`.
-* access to configs using `config()` function
+* Access to configs using `config()` function
 
 ```php
 echo config("db_name"); // php_mvc_framework
 ```
 * For first run create a `users` table in database
+* Access to environment variables with `env()` function
 
 ### Routing
 

@@ -1,12 +1,10 @@
 <?php
 
-
 function dd($v)
 {
     var_dump($v);
     exit();
 }
-
 
 function view($Name, $Data = [])
 {
@@ -30,7 +28,6 @@ function config($Key)
         exit();
     endif;
 }
-
 
 function route($RouteName, $Data = []): string
 {
@@ -65,3 +62,6 @@ function abort($Code = 404)
     exit();
 }
 
+function env($key,$default = null){
+    return \Core\SimpleDotEnv::env($key,$default);
+}
