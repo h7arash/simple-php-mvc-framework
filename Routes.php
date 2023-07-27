@@ -7,7 +7,8 @@ return [
         "url" => "/",
         "name" => "index",
         'controller' => \Controllers\Index::class,
-        'method' => 'index'
+        'method' => 'index',
+        'request_method' => 'GET' // array or string
     ],
 
 ];

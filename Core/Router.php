@@ -10,9 +10,12 @@ class Router
     private array $Parameters = [];
     private ?string $Controller = NULL;
     private ?string $Method = NULL;
+    private array $AllowedMethod = ['GET'];
+    private string $requestMethod;
 
     public function __construct()
     {
+        $this->requestMethod = $_SERVER['REQUEST_METHOD'];
         $RequestUri = str_replace(config('subdirectory'), '', $_SERVER['REQUEST_URI']);
         $RequestUri = str_replace('//', '/', $RequestUri);
         $this->Path = parse_url($RequestUri, PHP_URL_PATH);
@@ -22,7 +25,14 @@ class Router
     {
         $Routes = require __DIR__ . '/../Routes.php';
         foreach ($Routes as $Route):
-            if ($this->ValidateRoute($Route['url'])):
+            if(isset($Route['request_method'])) :
+                if(is_string($Route['request_method'])) :
+                    $this->AllowedMethod = [$Route['request_method']];
+                elseif(is_array($Route['request_method'])):
+                    $this->AllowedMethod = $Route['request_method'];
+                endif;
+            endif;
+            if ($this->ValidateRoute($Route['url'],$this->AllowedMethod)):
                 $this->Controller = $Route['controller'];
                 $this->Method = $Route['method'];
                 break;
@@ -41,8 +51,11 @@ class Router
         endif;
     }
 
-    private function ValidateRoute($RouteUrl): bool
+    private function ValidateRoute($RouteUrl,$allowedRequestMethod): bool
     {
+        if(!in_array($this->requestMethod,$allowedRequestMethod)):
+            return false;
+        endif;
         // uri that programmer define
         $Uri = array_values(array_filter(explode('/', $RouteUrl)));
 

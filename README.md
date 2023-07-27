@@ -50,13 +50,15 @@ you can define routes on `/Routes.php`;
 * `name` for route name that can access with `route()` function.
 * `controller` for controller class
 * `method` for controller callback method
+* `request_method` for allowed request method `(Default:['GET'])`
 
 ```php
 [
     "url" => "/welcome",
     "name" => "welcome",
     "controller" => Controllers\Welcome::class,
-    "method" => 'index'
+    "method" => 'index',
+    "request_method" => 'GET' // array or string
 ]
 ```
 
